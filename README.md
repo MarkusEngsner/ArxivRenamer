@@ -23,6 +23,6 @@ The files have to have their original arxiv-names.
 
 
 ## Roadmap
-[ ] Improve support for files in different directories  
-[ ] Add metadata to the files, instead of just renaming them  
-[ ] Extract information from the pdfs instead of connecting to arxiv.org
+* [ ] Improve support for files in different directories  
+* [ ] Add metadata to the files, instead of just renaming them  
+* [ ] Extract information from the pdfs instead of connecting to arxiv.org
