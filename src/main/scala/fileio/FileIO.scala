@@ -13,15 +13,12 @@ object FileIO {
     copy(toPath(oldName), toPath(newName), REPLACE_EXISTING)
   }
 
-  def arxivPdfs(): Array[File] = {
-    def regexPred(regexp: Regex)(f: File): Boolean =
-      regexp.unapplySeq(f.toString).isDefined
+  def arxivPdfs(): Array[String] = {
+    def regexPred(reg: Regex)(dir: File, name: String): Boolean =
+      reg.unapplySeq(name).isDefined
 
     val folder = new File(System.getProperty("user.dir"))
-    val files = folder.listFiles(f => !f.isHidden && !f.isDirectory)
-    val regexp = "(.*/)([0-9]{4})+[.]+([0-9]{5}).pdf".r
-    files.filter(regexPred(regexp))
+    val regexp = "([0-9]{4})+[.]+([0-9]{5}).pdf".r
+    folder list regexPred(regexp)
   }
-
-  // /([0-9]{4})+[.]+([0-9]{5}).pdf/g
 }
