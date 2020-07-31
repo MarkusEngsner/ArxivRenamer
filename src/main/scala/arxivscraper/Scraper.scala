@@ -29,11 +29,16 @@ object Scraper {
     // TODO: shorten list if too many authors, give option for it
   }
 
-  def newFileName(articleId: String): String = {
+  def newFileName(inputFilename: String): String = {
+    def inputSanitizer(s: String): String =
+      if (s.takeRight(4) == ".pdf") s.dropRight(4)
+      else s
+
+    val articleId = inputSanitizer(inputFilename)
+    println(articleId)
     val fullUrl = baseUrl + articleId
     val doc = browser.get(fullUrl)
-    (title(doc) + " - " + authors(doc)).replace(" ", "_")
     // TODO: add ID too?
-    // TODO: replace spaces with underscores?
+    (title(doc) + " - " + authors(doc)).replace(" ", "_") + ".pdf"
   }
 }
