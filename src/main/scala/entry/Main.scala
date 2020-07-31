@@ -15,9 +15,10 @@ object Main {
     First argument: all or list of filenames
    */
   def main(args: Array[String]): Unit = {
-    println(System.getProperty("user.dir"))
+    //println(System.getProperty("user.dir"))
     if (args.length < 1) {
       println("too few arguments")
+      println("Usage: file1 file2 ... OR all")
       return
     }
     if (args(0) == "all") renameAll()

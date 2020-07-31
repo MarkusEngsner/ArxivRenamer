@@ -35,7 +35,6 @@ object Scraper {
       else s
 
     val articleId = inputSanitizer(inputFilename)
-    println(articleId)
     val fullUrl = baseUrl + articleId
     val doc = browser.get(fullUrl)
     // TODO: add ID too?
