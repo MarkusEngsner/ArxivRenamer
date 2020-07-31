@@ -1,9 +1,14 @@
 package entry
 
-import arxivscraper.Scraper
-import fileio.FileIO
+import arxivscraper.Scraper.newFileName
+import fileio.FileIO.{copyFile, arxivPdfs}
 
-object Main{
+object Main {
+  def renameFile(oldName: String) =
+    copyFile(oldName, newFileName(oldName))
+
+  def renameAll() = arxivPdfs foreach renameFile
+
   def main(args: Array[String]): Unit = {
     println(System.getProperty("user.dir"))
     if (args.length < 1) {
@@ -11,7 +16,6 @@ object Main{
       return
     }
     val oldName = args(0)
-    val newName = Scraper.newFileName(args(0))
-    FileIO.copyFile(oldName, newName)
+    renameFile(oldName)
   }
 }
