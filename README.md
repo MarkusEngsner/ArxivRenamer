@@ -34,3 +34,5 @@ To be continued...
 * [ ] Extract information from the pdfs instead of connecting to arxiv.org
 * [ ] Add more formatting options
 * [ ] Add more options for which characters to remove
+* [ ] Add date to name
+* [ ] Add options to rename or copy
